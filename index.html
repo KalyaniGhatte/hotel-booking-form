@@ -8,78 +8,93 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <div class="booking-container">
+<div class="booking-container">
 
-        <div class="booking-card">
-            <h1>Hotel Booking Form</h1>
-            <p class="subtitle">Book your stay easily</p>
+    <div class="booking-card">
 
-            <form id="bookingForm">
+        <h1>Hotel Booking</h1>
 
-                <!-- Check-in -->
-                <div class="form-group">
-                    <label for="checkin">Check-in Date</label>
-                    <input type="date" id="checkin" required>
-                    <small class="error-message"></small>
-                </div>
-
-                <!-- Check-out -->
-                <div class="form-group">
-                    <label for="checkout">Check-out Date</label>
-                    <input type="date" id="checkout" required>
-                    <small class="error-message"></small>
-                </div>
-
-                <!-- Room Type -->
-                <div class="form-group">
-                    <label for="roomType">Room Type</label>
-                    <select id="roomType" required>
-                        <option value="">Select Room</option>
-                        <option value="2000">Single - ₹2000</option>
-                        <option value="3500">Double - ₹3500</option>
-                        <option value="5000">Suite - ₹5000</option>
-                    </select>
-                </div>
-
-                <!-- Guests -->
-                <div class="guest-container">
-
-                    <div class="form-group">
-                        <label for="adults">Adults</label>
-                        <input type="number" id="adults" min="1" value="1" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="children">Children</label>
-                        <input type="number" id="children" min="0" value="0">
-                    </div>
-
-                </div>
-
-                <!-- Special Request -->
-                <div class="form-group">
-                    <label for="requests">Special Requests</label>
-                    <textarea id="requests" rows="3" placeholder="Any special requirements?"></textarea>
-                </div>
-
-                <!-- Price Display -->
-                <div class="price-box">
-                    <h3>Total Price: ₹<span id="totalPrice">0</span></h3>
-                </div>
-
-                <!-- Submit -->
-                <button type="submit" class="book-btn">Book Now</button>
-
-            </form>
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress"></div>
         </div>
+
+        <form id="bookingForm">
+
+            <!-- STEP 1: Dates -->
+            <div class="form-step active">
+                <h2>Select Dates</h2>
+
+                <div class="form-group">
+                    <label>Check-in</label>
+                    <input type="date" id="checkin" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Check-out</label>
+                    <input type="date" id="checkout" required>
+                </div>
+
+                <button type="button" class="next-btn">Next</button>
+            </div>
+
+            <!-- STEP 2: Guests -->
+            <div class="form-step">
+                <h2>Guests</h2>
+
+                <div class="form-group">
+                    <label>Adults</label>
+                    <input type="number" id="adults" min="1" value="1">
+                </div>
+
+                <div class="form-group">
+                    <label>Children</label>
+                    <input type="number" id="children" min="0" value="0">
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="prev-btn">Back</button>
+                    <button type="button" class="next-btn">Next</button>
+                </div>
+            </div>
+
+            <!-- STEP 3: Room -->
+            <div class="form-step">
+                <h2>Select Room</h2>
+
+                <select id="roomType">
+                    <option value="">Choose Room</option>
+                    <option value="2000">Single - ₹2000</option>
+                    <option value="3500">Double - ₹3500</option>
+                    <option value="5000">Suite - ₹5000</option>
+                </select>
+
+                <div class="button-group">
+                    <button type="button" class="prev-btn">Back</button>
+                    <button type="button" class="next-btn">Next</button>
+                </div>
+            </div>
+
+            <!-- STEP 4: Summary -->
+            <div class="form-step">
+                <h2>Booking Summary</h2>
+
+                <div id="summary"></div>
+
+                <button type="button" class="prev-btn">Back</button>
+                <button type="submit" class="submit-btn">Confirm Booking</button>
+            </div>
+
+        </form>
 
     </div>
 
-    <script src="js/script.js"></script>
+</div>
+
+<script src="js/script.js"></script>
 </body>
 </html>
