@@ -8,30 +8,78 @@ body {
     height: 100vh;
 }
 
+/* Glass Card */
 .booking-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
     padding: 30px;
-    width: 400px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 420px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    color: white;
+    overflow: hidden;
+    position: relative;
 }
 
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Steps */
 .form-step {
     display: none;
+    animation: fadeSlide 0.4s ease forwards;
 }
 
 .form-step.active {
     display: block;
 }
 
-button {
-    padding: 10px 20px;
-    margin-top: 15px;
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Inputs */
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 8px;
     border: none;
-    border-radius: 6px;
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    box-shadow: 0 0 5px #1cc88a;
+}
+
+/* Buttons */
+button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    background: #4e73df;
+    background: #1cc88a;
     color: white;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .button-group {
@@ -39,9 +87,10 @@ button {
     justify-content: space-between;
 }
 
+/* Progress Bar */
 .progress-bar {
     height: 6px;
-    background: #ddd;
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     margin-bottom: 20px;
 }
@@ -52,4 +101,180 @@ button {
     background: #1cc88a;
     border-radius: 10px;
     transition: width 0.3s ease;
+}
+
+/* Summary */
+#summary p {
+    margin: 5px 0;
+}
+
+/* Success Modal */
+.success-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+.success-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    color: black;
+}
+
+.success-modal.active {
+    visibility: visible;
+}
+
+.room-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.room-card {
+    position: relative;
+    /* ADD THIS LINE */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.room-card img {
+    width: 100%;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.room-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(28, 200, 138, 0.6);
+}
+
+.room-card.selected {
+    border: 2px solid #1cc88a;
+    box-shadow: 0 0 15px rgba(28, 200, 138, 0.6);
+    transform: scale(1.05);
+}
+
+.live-price {
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+
+.room-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 77, 77, 0.9);
+    backdrop-filter: blur(5px);
+    color: white;
+    font-size: 9px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.coupon-box {
+    display: none;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.coupon-box.active {
+    display: flex;
+}
+
+
+
+.coupon-box input {
+    flex: 1;
+}
+
+#discountMessage {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.coupon-box {
+    display: none;
+}
+
+.coupon-suggestions {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-top: 5px;
+    display: none;
+    color: black;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.coupon-suggestions div {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.coupon-suggestions div:hover {
+    background: #f1f1f1;
+}
+
+.booking-history {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    animation: slideDown 0.4s ease;
+    color: white;
+
+    max-height: 250px;   /* 👈 Add this */
+    overflow-y: auto;    /* 👈 Add this */
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#closeHistory {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
